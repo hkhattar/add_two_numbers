@@ -20,9 +20,15 @@ index: function(req,res){
 },
 
 add_two: function(req,res){
-	console.log('req.params.num1',req.params.num1)
-	console.log('req.params.num2',req.params.num2)
-	var answer = parseInt(req.params.num1, 10) + parseInt(req.params.num2, 10);
+	
+	console.log('inside add two function')
+	// var i = req.params.num1
+	// var j = req.params.num2
+	var i = eval(req.params.num1)
+	var j = eval(req.params.num2)
+	console.log('req.params.num1',i)
+	console.log('req.params.num2',j)
+	var answer = parseInt(i, 10) + parseInt(j, 10);
 	// var answer = req.params.num1 + req.params.num2
 	console.log('answer',answer)
 	var result = new num({num:answer})
@@ -32,7 +38,7 @@ add_two: function(req,res){
 			console.log('error')
 		}else{
 			console.log('numbers are added');
-			res.redirect('/'+ req.params.num1 + '/' + req.params.num2);
+			res.redirect('/'+ i + '/' + j);
 			res.json();
 		}
 	})
@@ -40,7 +46,11 @@ add_two: function(req,res){
 
 
 show_one: function(req,res){
-	 num.findOne({num: parseInt(req.params.num1, 10) + parseInt(req.params.num2, 10)}, function(err, api) {
+	// var i = req.params.num1
+	// var j = req.params.num2
+	var i = eval(req.params.num1)
+	var j = eval(req.params.num2)
+	 num.findOne({num: parseInt(i, 10) + parseInt(j, 10)}, function(err, api) {
 	 // Retrieve 1 object
 	 // This code will run when the DB is done attempting to retrieve 1 record.
 	 
