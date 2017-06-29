@@ -38,8 +38,8 @@ add_two: function(req,res){
 			console.log('error')
 		}else{
 			console.log('numbers are added');
-			res.redirect('/'+ i + '/' + j);
-			res.json();
+			// res.redirect('/'+ i + '/' + j);
+			res.json(answer);
 		}
 	})
 },
